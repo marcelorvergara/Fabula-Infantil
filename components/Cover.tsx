@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import LoadingSpinner from "./SpinnerAnimation";
 
 const CenterBook = styled.section`
@@ -33,12 +33,83 @@ const CoverBack = styled.div<TSStyledCoverBack>`
   z-index: 1;
 `;
 
-const Content = styled.div`
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+`;
+
+const Content = styled.div<TSStyledCoverBack>`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 14px;
   padding: 12px;
+  ${(props) => {
+    if (props.hasHovered) {
+      return css`
+        animation: ${fadeOut} 2s linear;
+        animation-fill-mode: forwards;
+      `;
+    }
+    return "";
+  }}
+`;
+
+const Btn = styled.button<{ buynow: boolean }>`
+  background-color: ${({ buynow }) =>
+    buynow ? "hsla(40, 72%, 50%, 1)" : "hsla(347, 49%, 46%, 1)"};
+  border: 1px solid
+    ${({ buynow }) =>
+      buynow ? "hsla(40, 72%, 60%, 1)" : "hsla(0, 0%, 0%, 0.4)"};
+  color: hsla(150, 14%, 97%, 1);
+  cursor: pointer;
+  outline: none;
+  font-size: 0.895rem;
+  text-shadow: 0.1rem 0.1rem 0.5rem hsla(0, 0%, 0%, 0.5);
+  letter-spacing: 0.1rem;
+  border-radius: 0.5rem;
+  user-select: none;
+  padding: 1.5rem 2rem;
+  margin: 1rem;
+  transition: all 0.1s ease-in;
+
+  ::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover {
+    background-color: ${({ buynow }) =>
+      buynow ? "hsla(40, 72%, 60%, 1)" : "hsla(347, 49%, 51%, 1)"};
+    ${({ buynow }) => buynow && `transform: translateY(-3px)`}
+  }
+
+  &:active {
+    background-color: ${({ buynow }) =>
+      buynow ? "hsla(40, 72%, 35%, 1)" : "hsla(347, 49%, 26%, 1)"};
+  }
+`;
+
+const SignInBtn = styled(Btn)`
+  text-decoration: none;
+  background-color: hsla(189, 85%, 28%, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125),
+    0 1px 1px rgba(0, 0, 0, 0.05);
+  border-bottom-width: 0.5rem;
+
+  &:hover {
+    background-color: hsla(189, 85%, 32%, 1);
+  }
+
+  &:active {
+    border-bottom-width: 0.1rem;
+    border-top-width: 0.5rem;
+  }
 `;
 
 type TSStyledCoverBack = {
@@ -64,7 +135,9 @@ export default function Book() {
   return (
     <CenterBook>
       <CoverBack hasHovered={hasHovered}>
-        <Content>Deixe-me contar uma história...</Content>
+        <Content hasHovered={hasHovered}>
+          <SignInBtn buynow>Deixe-me contar uma história...</SignInBtn>
+        </Content>
       </CoverBack>
     </CenterBook>
   );
