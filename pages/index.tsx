@@ -101,10 +101,6 @@ export default function Home() {
     }
   };
 
-  const handleOption3 = (text: string) => {
-    console.log(text);
-  };
-
   const handleReset = (cond: boolean) => {
     setResetPage(cond);
     setResult({} as IResult);
@@ -137,7 +133,6 @@ export default function Home() {
           result={result}
           isLoading={isLoading}></FourthPage>
         <LastPage
-          onSendOption={handleOption3}
           resetPage={resetPage}
           result={result}
           isLoading={isLoading}></LastPage>

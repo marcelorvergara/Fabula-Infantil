@@ -65,14 +65,12 @@ type TSStyledClickd = {
 };
 
 export interface ILastPageProps {
-  onSendOption: (text: string) => void;
   result?: IResult;
   isLoading: boolean;
   resetPage: boolean;
 }
 
 export default function LastPage({
-  onSendOption,
   result,
   isLoading,
   resetPage,
