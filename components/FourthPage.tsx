@@ -35,6 +35,7 @@ const FPDiv = styled.div<TSStyledClickd>`
 `;
 
 const Content = styled.div<TSStyledClickd>`
+  overflow-y: auto;
   /* hide content when page has changed */
   ${(props) => {
     if (props.hasClicked) {
@@ -48,7 +49,7 @@ const Content = styled.div<TSStyledClickd>`
   }}
   display: block;
   margin: 20px 0 12px 0;
-  height: 840px;
+  height: 920px;
   text-align: left;
   padding: 2px;
 `;
