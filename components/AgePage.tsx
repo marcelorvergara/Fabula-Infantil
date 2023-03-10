@@ -137,6 +137,11 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
   useEffect(() => {
     if (resetPage) {
       setHasClicked(false);
+      // Clear all radio buttons
+      const radioButtons = document.getElementsByName("radio");
+      radioButtons.forEach((button) => {
+        (button as HTMLInputElement).checked = false;
+      });
     }
   }, [resetPage]);
 
