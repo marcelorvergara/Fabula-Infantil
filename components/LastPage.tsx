@@ -61,6 +61,19 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
+const Container = styled.div`
+  align-items: flex-start;
+`;
+
+const ImageContainer = styled.img`
+  float: right;
+  padding: 4px;
+`;
+
+const Text = styled.p`
+  margin: 0;
+`;
+
 type TSStyledClickd = {
   hasClicked: boolean;
 };
@@ -69,12 +82,14 @@ export interface ILastPageProps {
   result?: IResult;
   isLoading: boolean;
   resetPage: boolean;
+  image: string;
 }
 
 export default function LastPage({
   result,
   isLoading,
   resetPage,
+  image,
 }: ILastPageProps) {
   const [hasClicked, setHasClicked] = useState(false);
 
@@ -92,12 +107,30 @@ export default function LastPage({
         ) : (
           <Content hasClicked={hasClicked}>
             <Wrapper>
-              {result?.result &&
-                result?.result.message.content.split("\n").map((str, k) => (
-                  <span key={k}>
-                    {str} <br />
-                  </span>
-                ))}
+              <Text>
+                {result?.result &&
+                  result?.result.message.content.split("\n").map((str, k) => {
+                    if (k === 0) {
+                      return (
+                        <Container key={k}>
+                          <ImageContainer
+                            src={image}
+                            alt="first image of the story"
+                            width={128}
+                            height={128}
+                          />
+                          <Text>{str}</Text>
+                        </Container>
+                      );
+                    } else {
+                      return (
+                        <span key={k}>
+                          {str} <br />
+                        </span>
+                      );
+                    }
+                  })}
+              </Text>
             </Wrapper>
           </Content>
         )}

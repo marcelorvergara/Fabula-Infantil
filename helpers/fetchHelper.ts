@@ -48,3 +48,20 @@ export async function getText(
     }),
   });
 }
+
+// image generation
+export async function generateImage(strToGenerate: string) {
+  return await fetch(`http://localhost:3005/generateImage`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: "http://localhost:3000",
+    },
+    body: JSON.stringify({
+      prompt: strToGenerate,
+      n: 1,
+      size: "256x256",
+    }),
+  });
+}

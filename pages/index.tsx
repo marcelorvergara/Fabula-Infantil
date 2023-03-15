@@ -5,10 +5,11 @@ import FourthPage from "@/components/FourthPage";
 import LastPage from "@/components/LastPage";
 import AgePage from "@/components/AgePage";
 import ThirdPage from "@/components/ThirdPage";
-import { getText } from "@/helpers/fetchHelper";
+import { generateImage, getText } from "@/helpers/fetchHelper";
 import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const MasterDiv = styled.div`
   display: flex;
@@ -28,6 +29,11 @@ export default function Home() {
   const [result, setResult] = useState<IResult>();
   const [resetPage, setResetPage] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [story, setStory] = useState<string[]>([""]);
+  const router = useRouter();
+  const [firstImage, setFirstImage] = useState("");
+  const [secondImage, setSecondImage] = useState("");
+  const [thirdImage, setThirdImage] = useState("");
 
   const handleKw = (text: string) => {
     setKeyword(text);
@@ -40,12 +46,25 @@ export default function Home() {
       // got to the back-end api to generate story
       const result = await getText(keyword, age);
       const resultJson = (await result.json()) as IResult;
+      // text to show in screen
       setResult(resultJson);
+      // text to share after story is complete
+      setStory([keyword]);
       // if there is an error in the generation of the story
       if (resultJson.result.message.content.indexOf("\n") === -1) {
         setResetPage(true);
         return;
       }
+      // generate first image
+      const image1 = await generateImage(
+        "desenho para criança com idade entre " +
+          age.replace("_", " e ") +
+          " anos " +
+          keyword +
+          resultJson.result.message.content
+      );
+      const image1Json = await image1.json();
+      setFirstImage(image1Json.result);
     } catch (error) {
       console.error(error);
     } finally {
@@ -65,7 +84,22 @@ export default function Home() {
         const continueStory = [choosedOption, selectedOption];
         // send to the back-end
         const resultOption = await getText(keyword, age, continueStory);
-        setResult(await resultOption.json());
+        const resultJson = (await resultOption.json()) as IResult;
+        setResult(resultJson);
+        // text to share after story is complete
+        const storyCp = story;
+        storyCp?.push(choosedOption.content, selectedOption.content);
+        setStory(storyCp);
+        // generate second image
+        const image2 = await generateImage(
+          "desenho para criança com idade entre " +
+            age.replace("_", " e ") +
+            " anos " +
+            keyword +
+            resultJson.result.message.content
+        );
+        const image2Json = await image2.json();
+        setSecondImage(image2Json.result);
       }
     } catch (error) {
       console.error(error);
@@ -91,8 +125,26 @@ export default function Home() {
         });
         // send to the back-end
         const resultOption = await getText(keyword, age, continueStory);
-        const resultOptionJson = await resultOption.json();
-        setResult(resultOptionJson);
+        const resultJson = (await resultOption.json()) as IResult;
+        setResult(resultJson);
+        // text to share after story is complete
+        const storyCp = story;
+        storyCp?.push(
+          choosedOption.content,
+          selectedOption.content,
+          resultJson.result.message.content
+        );
+        setStory(storyCp);
+        // generate third image
+        const image3 = await generateImage(
+          "desenho para criança com idade entre " +
+            age.replace("_", " e ") +
+            " anos " +
+            keyword +
+            resultJson.result.message.content
+        );
+        const image3Json = await image3.json();
+        setThirdImage(image3Json.result);
       }
     } catch (error) {
       console.error(error);
@@ -112,6 +164,10 @@ export default function Home() {
     }
   }, [resetPage]);
 
+  function shareStory() {
+    router.push(`/stories/id/${encodeURIComponent(story.join("\\;"))}`);
+  }
+
   return (
     <MasterDiv>
       <Wrapper>
@@ -126,17 +182,20 @@ export default function Home() {
           onSendOption={handleOption}
           resetPage={resetPage}
           result={result}
-          isLoading={isLoading}></ThirdPage>
+          isLoading={isLoading}
+          image={firstImage}></ThirdPage>
         <FourthPage
           onSendOption={handleOption2}
           resetPage={resetPage}
           result={result}
-          isLoading={isLoading}></FourthPage>
+          isLoading={isLoading}
+          image={secondImage}></FourthPage>
         <LastPage
           resetPage={resetPage}
           result={result}
-          isLoading={isLoading}></LastPage>
-        <BackCover onSendReset={handleReset} />
+          isLoading={isLoading}
+          image={thirdImage}></LastPage>
+        <BackCover onSendReset={handleReset} shareStory={shareStory} />
       </Wrapper>
     </MasterDiv>
   );

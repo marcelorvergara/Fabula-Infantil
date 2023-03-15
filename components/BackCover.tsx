@@ -6,7 +6,6 @@ const CenterBook = styled.section`
 `;
 
 const CoverBack = styled.div`
-  cursor: pointer;
   margin: 10px 10px 5px 5px;
   height: 980px;
   width: 345px;
@@ -32,11 +31,13 @@ const ButtonDiv = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
+  flex-flow: wrap;
   justify-content: center;
   align-items: center;
 `;
 
 const Button = styled.button`
+  cursor: pointer;
   background: transparent;
   border-radius: 3px;
   border: 2px solid palevioletred;
@@ -45,19 +46,25 @@ const Button = styled.button`
   padding: 0.25em 1em;
   margin-bottom: 12px;
   font-size: 1.2rem;
+  width: 80%;
 `;
 
 export interface IBackCoverProps {
   onSendReset: (cond: boolean) => void;
+  shareStory: () => void;
 }
 
-export default function BackCover({ onSendReset }: IBackCoverProps) {
+export default function BackCover({
+  onSendReset,
+  shareStory,
+}: IBackCoverProps) {
   return (
     <CenterBook>
       <CoverBack>
         <Content>Fim</Content>
         <ButtonDiv>
           <Button onClick={() => onSendReset(true)}>Reiniciar</Button>
+          {/* <Button onClick={shareStory}>Compartilhar</Button> */}
         </ButtonDiv>
       </CoverBack>
     </CenterBook>
