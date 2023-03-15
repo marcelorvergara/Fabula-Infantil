@@ -51,12 +51,12 @@ export async function getText(
 
 // image generation
 export async function generateImage(strToGenerate: string) {
-  return await fetch(`http://localhost:3005/generateImage`, {
+  return await fetch(`${process.env.NEXT_PUBLIC_BACKEND_SRV}/generateImage`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Origin: "http://localhost:3000",
+      Origin: `${process.env.NEXT_PUBLIC_BACKEND_SRV}`,
     },
     body: JSON.stringify({
       prompt: strToGenerate,
