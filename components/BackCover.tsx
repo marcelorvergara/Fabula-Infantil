@@ -64,6 +64,7 @@ export default function BackCover({
         <Content>Fim</Content>
         <ButtonDiv>
           <Button onClick={() => onSendReset(true)}>Reiniciar</Button>
+          {/* todo */}
           {/* <Button onClick={shareStory}>Compartilhar</Button> */}
         </ButtonDiv>
       </CoverBack>
