@@ -181,7 +181,7 @@ export default function FourthPage({
                         <Container key={k}>
                           <ImageContainer
                             src={image}
-                            alt="first image of the story"
+                            alt="Aqui deveria ter uma imagem"
                             width={128}
                             height={128}
                           />
