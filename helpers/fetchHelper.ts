@@ -3,32 +3,17 @@ export async function getText(
   age: string,
   continueStory?: Array<{ role: string; content: string }>
 ) {
+  const instructions = `
+    Conte o começo de uma história para uma criança entre ${age.replace(
+      "_",
+      " e "
+    )} anos sobre a palavra "${kw}" em no máximo 200 palavras. Em seguida, ofereça 3 opções para continuar a história, cada uma com no máximo cinco palavras, precedidas de um algarismo numérico. Aguarde o usuário escolher uma opção e continue contando o meio da história. Caso a palavra escolhida não gere uma história, responda apenas "erro".
+  `;
+
   const messages = [
     {
       role: "system",
-      content: `"Você conta o começo de uma história para uma criança entre ${age.replace(
-        "_",
-        " e "
-      )} anos sobre uma palavra que o usuário escolhe em no máximo 200 palavras.`,
-    },
-    {
-      role: "system",
-      content:
-        "Depois, você dá 3 opções, cada uma composta por uma frase com no máximo cinco palavras.",
-    },
-    {
-      role: "system",
-      content:
-        "Aguarda o usuário escolher uma opção e, em seguida, pedirei que continue contando o meio da história.",
-    },
-    {
-      role: "system",
-      content:
-        'Caso a palavra escolhida não gere uma história, responda apenas "erro" e nenhum',
-    },
-    {
-      role: "system",
-      content: "Cada opção deve ser precedido de um algarismo numérico",
+      content: instructions.trim(),
     },
     { role: "user", content: kw },
   ];
