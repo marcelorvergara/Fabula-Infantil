@@ -23,6 +23,9 @@ const Wrapper = styled.section`
   padding-right: 12px;
 `;
 
+const placeHolderImg =
+  "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png";
+
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [age, setAge] = useState("");
@@ -31,9 +34,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [story, setStory] = useState<string[]>([""]);
   const router = useRouter();
-  const [firstImage, setFirstImage] = useState("");
-  const [secondImage, setSecondImage] = useState("");
-  const [thirdImage, setThirdImage] = useState("");
+  const [firstImage, setFirstImage] = useState(placeHolderImg);
+  const [secondImage, setSecondImage] = useState(placeHolderImg);
+  const [thirdImage, setThirdImage] = useState(placeHolderImg);
 
   const handleKw = (text: string) => {
     setKeyword(text);
@@ -61,7 +64,8 @@ export default function Home() {
           age.replace("_", " e ") +
           " anos " +
           keyword +
-          resultJson.result.message.content
+          " " +
+          resultJson.result.message.content.replace("//n", " ")
       );
       const image1Json = await image1.json();
       setFirstImage(image1Json.result);
@@ -156,6 +160,9 @@ export default function Home() {
   const handleReset = (cond: boolean) => {
     setResetPage(cond);
     setResult({} as IResult);
+    setFirstImage(placeHolderImg);
+    setSecondImage(placeHolderImg);
+    setThirdImage(placeHolderImg);
   };
 
   useEffect(() => {

@@ -1,6 +1,8 @@
 import { IResult } from "@/interfaces/IResult";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
+import Modal from "./Modal";
 import LoadingSpinner from "./SpinnerAnimation";
 
 const CenterFP = styled.section`
@@ -121,12 +123,12 @@ const Container = styled.div`
   align-items: flex-start;
 `;
 
-const ImageContainer = styled.img`
+const ImageContainer = styled(Image)`
   float: right;
   padding: 4px;
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   margin: 0;
 `;
 
@@ -150,6 +152,7 @@ export default function FourthPage({
   image,
 }: IFourthPageProps) {
   const [hasClicked, setHasClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleOption(opt: string) {
     onSendOption(opt);
@@ -184,6 +187,7 @@ export default function FourthPage({
                             alt="Aqui deveria ter uma imagem"
                             width={128}
                             height={128}
+                            onClick={() => setIsModalOpen(true)}
                           />
                           <Text>{str}</Text>
                         </Container>
@@ -234,6 +238,9 @@ export default function FourthPage({
               </Item>
             </Wrapper>
           </Content>
+        )}
+        {isModalOpen && (
+          <Modal onClose={() => setIsModalOpen(false)} imageSrc={image} />
         )}
       </FPDiv>
     </CenterFP>

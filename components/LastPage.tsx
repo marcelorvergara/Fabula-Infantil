@@ -1,6 +1,8 @@
 import { IResult } from "@/interfaces/IResult";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
+import Modal from "./Modal";
 import LoadingSpinner from "./SpinnerAnimation";
 
 const CenterFP = styled.section`
@@ -65,12 +67,12 @@ const Container = styled.div`
   align-items: flex-start;
 `;
 
-const ImageContainer = styled.img`
+const ImageContainer = styled(Image)`
   float: right;
   padding: 4px;
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   margin: 0;
 `;
 
@@ -92,6 +94,7 @@ export default function LastPage({
   image,
 }: ILastPageProps) {
   const [hasClicked, setHasClicked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (resetPage) {
@@ -100,7 +103,7 @@ export default function LastPage({
   }, [resetPage]);
 
   return (
-    <CenterFP onClick={() => setHasClicked(true)}>
+    <CenterFP>
       <FPDiv hasClicked={hasClicked}>
         {isLoading && !hasClicked ? (
           <LoadingSpinner></LoadingSpinner>
@@ -118,13 +121,14 @@ export default function LastPage({
                             alt="Aqui deveria ter uma imagem"
                             width={128}
                             height={128}
+                            onClick={() => setIsModalOpen(true)}
                           />
-                          <Text>{str}</Text>
+                          <Text onClick={() => setHasClicked(true)}>{str}</Text>
                         </Container>
                       );
                     } else {
                       return (
-                        <span key={k}>
+                        <span key={k} onClick={() => setHasClicked(true)}>
                           {str} <br />
                         </span>
                       );
@@ -133,6 +137,9 @@ export default function LastPage({
               </Text>
             </Wrapper>
           </Content>
+        )}
+        {isModalOpen && (
+          <Modal onClose={() => setIsModalOpen(false)} imageSrc={image} />
         )}
       </FPDiv>
     </CenterFP>
