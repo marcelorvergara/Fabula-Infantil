@@ -38,16 +38,16 @@ export default function Home() {
   const [secondImage, setSecondImage] = useState(placeHolderImg);
   const [thirdImage, setThirdImage] = useState(placeHolderImg);
 
-  const handleKw = (text: string) => {
-    setKeyword(text);
+  const handleKw = (kw: string) => {
+    setKeyword(kw);
   };
 
-  const handleAge = async (text: string) => {
+  const handleAge = async (ageStr: string) => {
     try {
       setIsLoading(true);
-      setAge(text);
+      setAge(ageStr);
       // got to the back-end api to generate story
-      const result = await getText(keyword, age);
+      const result = await getText(keyword, ageStr);
       const resultJson = (await result.json()) as IResult;
       // text to show in screen
       setResult(resultJson);
@@ -59,13 +59,14 @@ export default function Home() {
         return;
       }
       // generate first image
+      console.log("age para imagem", age);
       const image1 = await generateImage(
-        "desenho para criança com idade entre " +
-          age.replace("_", " e ") +
+        "gere uma imgaem para uma criança com idade entre " +
+          ageStr.replace("_", " e ") +
           " anos " +
           keyword +
-          " " +
-          resultJson.result.message.content.replace("//n", " ")
+          " sobre o seguinte texto: " +
+          resultJson.result.message.content.replace("\\n", " ")
       );
       const image1Json = await image1.json();
       setFirstImage(image1Json.result);
@@ -96,11 +97,12 @@ export default function Home() {
         setStory(storyCp);
         // generate second image
         const image2 = await generateImage(
-          "desenho para criança com idade entre " +
+          "gere uma imgaem para uma criança com idade entre " +
             age.replace("_", " e ") +
             " anos " +
             keyword +
-            resultJson.result.message.content
+            " sobre o seguinte texto: " +
+            resultJson.result.message.content.replace("\\n", " ")
         );
         const image2Json = await image2.json();
         setSecondImage(image2Json.result);
@@ -141,11 +143,12 @@ export default function Home() {
         setStory(storyCp);
         // generate third image
         const image3 = await generateImage(
-          "desenho para criança com idade entre " +
+          "gere uma imgaem para uma criança com idade entre " +
             age.replace("_", " e ") +
             " anos " +
             keyword +
-            resultJson.result.message.content
+            " sobre o seguinte texto: " +
+            resultJson.result.message.content.replace("\\n", " ")
         );
         const image3Json = await image3.json();
         setThirdImage(image3Json.result);
