@@ -10,6 +10,7 @@ import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { getFirst60Percent } from "@/helpers/generalFunctions";
 
 const MasterDiv = styled.div`
   display: flex;
@@ -59,14 +60,15 @@ export default function Home() {
         return;
       }
       // generate first image
-      console.log("age para imagem", age);
       const image1 = await generateImage(
         "gere uma imgaem para uma criança com idade entre " +
           ageStr.replace("_", " e ") +
-          " anos " +
+          " anos sobre o seguinte texto: " +
           keyword +
-          " sobre o seguinte texto: " +
-          resultJson.result.message.content.replace("\\n", " ")
+          ". " +
+          getFirst60Percent(
+            resultJson.result.message.content.replace("\\n", " ")
+          )
       );
       const image1Json = await image1.json();
       setFirstImage(image1Json.result);
@@ -99,10 +101,12 @@ export default function Home() {
         const image2 = await generateImage(
           "gere uma imgaem para uma criança com idade entre " +
             age.replace("_", " e ") +
-            " anos " +
+            " anos sobre o seguinte texto: " +
             keyword +
-            " sobre o seguinte texto: " +
-            resultJson.result.message.content.replace("\\n", " ")
+            ". " +
+            getFirst60Percent(
+              resultJson.result.message.content.replace("\\n", " ")
+            )
         );
         const image2Json = await image2.json();
         setSecondImage(image2Json.result);
@@ -145,10 +149,12 @@ export default function Home() {
         const image3 = await generateImage(
           "gere uma imgaem para uma criança com idade entre " +
             age.replace("_", " e ") +
-            " anos " +
+            " anos sobre o seguinte texto: " +
             keyword +
-            " sobre o seguinte texto: " +
-            resultJson.result.message.content.replace("\\n", " ")
+            ". " +
+            getFirst60Percent(
+              resultJson.result.message.content.replace("\\n", " ")
+            )
         );
         const image3Json = await image3.json();
         setThirdImage(image3Json.result);
