@@ -61,7 +61,7 @@ export default function Home() {
       }
       // generate first image
       const image1 = await generateImage(
-        "gere uma imgaem para uma criança com idade entre " +
+        "gere uma imgaem sem texto para uma criança com idade entre " +
           ageStr.replace("_", " e ") +
           " anos sobre o seguinte texto: " +
           keyword +
@@ -99,7 +99,7 @@ export default function Home() {
         setStory(storyCp);
         // generate second image
         const image2 = await generateImage(
-          "gere uma imgaem para uma criança com idade entre " +
+          "gere uma imgaem sem texto para uma criança com idade entre " +
             age.replace("_", " e ") +
             " anos sobre o seguinte texto: " +
             keyword +
@@ -147,7 +147,7 @@ export default function Home() {
         setStory(storyCp);
         // generate third image
         const image3 = await generateImage(
-          "gere uma imgaem para uma criança com idade entre " +
+          "gere uma imgaem sem texto para uma criança com idade entre " +
             age.replace("_", " e ") +
             " anos sobre o seguinte texto: " +
             keyword +
