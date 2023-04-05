@@ -38,6 +38,12 @@ export default function Home() {
   const [firstImage, setFirstImage] = useState(placeHolderImg);
   const [secondImage, setSecondImage] = useState(placeHolderImg);
   const [thirdImage, setThirdImage] = useState(placeHolderImg);
+  const [firstPart, setFirstPart] = useState<IMessage[]>([
+    {
+      role: "",
+      content: "",
+    },
+  ]);
 
   const handleKw = (kw: string) => {
     setKeyword(kw);
@@ -47,9 +53,10 @@ export default function Home() {
     try {
       setIsLoading(true);
       setAge(ageStr);
-      // got to the back-end api to generate story
-      const result = await getText(keyword, ageStr);
-      const resultJson = (await result.json()) as IResult;
+      // send to the back-end api to generate story
+      const res = await getText(keyword, ageStr);
+      const resultJson = (await res.json()) as IResult;
+
       // text to show in screen
       setResult(resultJson);
       // text to share after story is complete
@@ -92,6 +99,9 @@ export default function Home() {
         // send to the back-end
         const resultOption = await getText(keyword, age, continueStory);
         const resultJson = (await resultOption.json()) as IResult;
+        // store the first part to send to the backend
+        setFirstPart([choosedOption, selectedOption]);
+
         setResult(resultJson);
         // text to share after story is complete
         const storyCp = story;
@@ -122,12 +132,12 @@ export default function Home() {
     try {
       setIsLoading(true);
       if (result?.result.message) {
-        // store the first part of the story
+        // store the second part of the story
         const choosedOption: IMessage = result?.result.message;
         // create the object to send the selected option
         const selectedOption = { role: "user", content: text };
-        // create the array to send the first part and the selected option
-        const continueStory = [choosedOption, selectedOption];
+        // create the array to send the first, second part and the selected option
+        const continueStory = [...firstPart, choosedOption, selectedOption];
         continueStory.push({
           role: "user",
           content:
@@ -136,6 +146,7 @@ export default function Home() {
         // send to the back-end
         const resultOption = await getText(keyword, age, continueStory);
         const resultJson = (await resultOption.json()) as IResult;
+
         setResult(resultJson);
         // text to share after story is complete
         const storyCp = story;
