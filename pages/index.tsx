@@ -9,7 +9,6 @@ import { generateImage, getText } from "@/helpers/fetchHelper";
 import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useRouter } from "next/router";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
 
 const MasterDiv = styled.div`
@@ -34,7 +33,6 @@ export default function Home() {
   const [resetPage, setResetPage] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [story, setStory] = useState<string[]>([""]);
-  const router = useRouter();
   const [firstImage, setFirstImage] = useState(placeHolderImg);
   const [secondImage, setSecondImage] = useState(placeHolderImg);
   const [thirdImage, setThirdImage] = useState(placeHolderImg);
@@ -169,6 +167,10 @@ export default function Home() {
         );
         const image3Json = await image3.json();
         setThirdImage(image3Json.result);
+        console.log("story", story);
+        console.log("firstimage", firstImage);
+        console.log("secondimage", secondImage);
+        console.log("thirdimage", thirdImage);
       }
     } catch (error) {
       console.error(error);
@@ -192,7 +194,7 @@ export default function Home() {
   }, [resetPage]);
 
   function shareStory() {
-    router.push(`/stories/id/${encodeURIComponent(story.join("\\;"))}`);
+    console.log("test");
   }
 
   return (
