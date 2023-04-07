@@ -93,7 +93,15 @@ export default function Home() {
         // create the object to send the selected option
         const selectedOption = { role: "user", content: text };
         // create the array to send the first part and the selected option
-        const continueStory = [choosedOption, selectedOption];
+        const continueStory = [
+          {
+            role: "system",
+            content:
+              "lembre-se de dar as 3 opções mencionadas no início das instruções",
+          },
+          choosedOption,
+          selectedOption,
+        ];
         // send to the back-end
         const resultOption = await getText(keyword, age, continueStory);
         const resultJson = (await resultOption.json()) as IResult;
