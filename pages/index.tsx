@@ -5,7 +5,11 @@ import FourthPage from "@/components/FourthPage";
 import LastPage from "@/components/LastPage";
 import AgePage from "@/components/AgePage";
 import ThirdPage from "@/components/ThirdPage";
-import { generateImage, getText } from "@/helpers/fetchHelper";
+import {
+  generateImage,
+  getText,
+  shareStoryHelper,
+} from "@/helpers/fetchHelper";
 import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -97,7 +101,7 @@ export default function Home() {
           {
             role: "system",
             content:
-              "lembre-se de dar as 3 opções mencionadas no início das instruções",
+              "lembre-se de dar as 3 opções mencionadas no início desse chat",
           },
           choosedOption,
           selectedOption,
@@ -175,10 +179,6 @@ export default function Home() {
         );
         const image3Json = await image3.json();
         setThirdImage(image3Json.result);
-        console.log("story", story);
-        console.log("firstimage", firstImage);
-        console.log("secondimage", secondImage);
-        console.log("thirdimage", thirdImage);
       }
     } catch (error) {
       console.error(error);
@@ -201,8 +201,9 @@ export default function Home() {
     }
   }, [resetPage]);
 
-  function shareStory() {
+  async function shareStory() {
     console.log("test");
+    await shareStoryHelper(story, firstImage, secondImage, thirdImage);
   }
 
   return (
