@@ -211,9 +211,10 @@ export default function Home() {
     console.log(storyId);
     if (storyId !== null) {
       const storyIdJson = await storyId.json();
-      window.open(
-        `${process.env.NEXT_PUBLIC_BACKEND_SRV}/shareStory/${storyIdJson}`
-      );
+      // time necessary to store images in storage
+      setTimeout(function () {
+        window.open(`https://story.contaumconto.com/shareStory/${storyIdJson}`);
+      }, 3000);
     }
   }
 
