@@ -208,13 +208,13 @@ export default function Home() {
       secondImage,
       thirdImage
     );
-    console.log(storyId);
+
     if (storyId !== null) {
       const storyIdJson = await storyId.json();
       // time necessary to store images in storage
       setTimeout(function () {
         window.open(`https://story.contaumconto.com/shareStory/${storyIdJson}`);
-      }, 3000);
+      }, 5000);
     }
   }
 
