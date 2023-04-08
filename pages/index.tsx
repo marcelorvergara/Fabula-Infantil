@@ -214,7 +214,7 @@ export default function Home() {
       // time necessary to store images in storage
       setTimeout(function () {
         window.open(`https://story.contaumconto.com/shareStory/${storyIdJson}`);
-      }, 5000);
+      }, 1500);
     }
   }
 
