@@ -202,8 +202,19 @@ export default function Home() {
   }, [resetPage]);
 
   async function shareStory() {
-    console.log("test");
-    await shareStoryHelper(story, firstImage, secondImage, thirdImage);
+    const storyId = await shareStoryHelper(
+      story,
+      firstImage,
+      secondImage,
+      thirdImage
+    );
+    console.log(storyId);
+    if (storyId !== null) {
+      const storyIdJson = await storyId.json();
+      window.open(
+        `${process.env.NEXT_PUBLIC_BACKEND_SRV}/shareStory/${storyIdJson}`
+      );
+    }
   }
 
   return (
