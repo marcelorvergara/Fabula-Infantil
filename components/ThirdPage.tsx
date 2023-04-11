@@ -51,7 +51,7 @@ const Content = styled.div<TSStyledClickd>`
   }}
   display: block;
   margin: 20px 0 12px 0;
-  height: 920px;
+  height: 810px;
   text-align: left;
   padding: 2px;
 `;
