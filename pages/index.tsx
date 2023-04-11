@@ -56,7 +56,11 @@ export default function Home() {
   ]);
 
   const handleKw = (kw: string) => {
-    setKeyword(kw);
+    if (kw === "") {
+      setKeyword("Uma história legal");
+    } else {
+      setKeyword(kw);
+    }
   };
 
   const handleAge = async (ageStr: string) => {
