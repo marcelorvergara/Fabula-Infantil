@@ -8,8 +8,9 @@ const CenterFP = styled.section`
 
 const FPDiv = styled.div<TSStyledClickd>`
   cursor: pointer;
-  height: 970px;
+  height: 870px;
   width: 330px;
+  margin-top: 3px;
   background-color: #e4e4e4;
   border-radius: 2px 20px 20px 2px;
   transform: rotateX(10deg);

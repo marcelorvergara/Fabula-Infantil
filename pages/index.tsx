@@ -15,7 +15,15 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
 
-const MasterDiv = styled.div`
+const FirstDiv = styled.div`
+  position: relative;
+  right: 30px;
+  margin-bottom: 12px;
+`;
+
+const MotherDiv = styled.div`
+  position: absolute;
+  left: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,34 +227,36 @@ export default function Home() {
   }
 
   return (
-    <MasterDiv>
-      <Wrapper>
-        <Cover />
-        <KeywordPage
-          onSendKw={handleKw}
-          resetPage={resetPage}
-          result={result}
-        />
-        <AgePage onSendAge={handleAge} resetPage={resetPage} />
-        <ThirdPage
-          onSendOption={handleOption}
-          resetPage={resetPage}
-          result={result}
-          isLoading={isLoading}
-          image={firstImage}></ThirdPage>
-        <FourthPage
-          onSendOption={handleOption2}
-          resetPage={resetPage}
-          result={result}
-          isLoading={isLoading}
-          image={secondImage}></FourthPage>
-        <LastPage
-          resetPage={resetPage}
-          result={result}
-          isLoading={isLoading}
-          image={thirdImage}></LastPage>
-        <BackCover onSendReset={handleReset} shareStory={shareStory} />
-      </Wrapper>
-    </MasterDiv>
+    <FirstDiv>
+      <MotherDiv>
+        <Wrapper>
+          <Cover />
+          <KeywordPage
+            onSendKw={handleKw}
+            resetPage={resetPage}
+            result={result}
+          />
+          <AgePage onSendAge={handleAge} resetPage={resetPage} />
+          <ThirdPage
+            onSendOption={handleOption}
+            resetPage={resetPage}
+            result={result}
+            isLoading={isLoading}
+            image={firstImage}></ThirdPage>
+          <FourthPage
+            onSendOption={handleOption2}
+            resetPage={resetPage}
+            result={result}
+            isLoading={isLoading}
+            image={secondImage}></FourthPage>
+          <LastPage
+            resetPage={resetPage}
+            result={result}
+            isLoading={isLoading}
+            image={thirdImage}></LastPage>
+          <BackCover onSendReset={handleReset} shareStory={shareStory} />
+        </Wrapper>
+      </MotherDiv>
+    </FirstDiv>
   );
 }

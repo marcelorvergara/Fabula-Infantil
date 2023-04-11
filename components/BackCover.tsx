@@ -6,7 +6,7 @@ const CenterBook = styled.section`
 `;
 
 const CoverBack = styled.div`
-  height: 980px;
+  height: 880px;
   width: 345px;
   background-color: #46485a;
   border-radius: 2px 20px 20px 2px;

@@ -9,8 +9,9 @@ const CenterFP = styled.section`
 
 const FPDiv = styled.div<TSStyledClickd>`
   cursor: pointer;
-  height: 970px;
+  height: 870px;
   width: 330px;
+  margin-top: 3px;
   padding-right: 6px;
   background-color: #e4e4e4;
   border-radius: 2px 20px 20px 2px;
@@ -55,7 +56,7 @@ const Input = styled.input`
   width: 80%;
   font-size: 18px;
   padding: 10px;
-  margin: 10px;
+  margin: 96px 12px 12px 12px;
   background: papayawhip;
   border: none;
   border-radius: 3px;
@@ -69,8 +70,8 @@ const Button = styled.button`
   border-radius: 3px;
   border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+  margin: 10px 1em;
+  padding: 0.55em 1.9em;
   margin-bottom: 12px;
 `;
 
