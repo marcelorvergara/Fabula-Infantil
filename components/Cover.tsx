@@ -9,7 +9,7 @@ const CenterBook = styled.section`
 const CoverBack = styled.div<TSStyledCoverBack>`
   cursor: pointer;
   height: 880px;
-  width: 340px;
+  width: 320px;
   background-color: #46485a;
   border-radius: 2px 20px 20px 2px;
   box-shadow: 1px 1px 10px gray;
