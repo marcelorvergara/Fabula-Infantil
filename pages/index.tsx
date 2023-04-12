@@ -17,22 +17,34 @@ import { getFirst60Percent } from "@/helpers/generalFunctions";
 
 const FirstDiv = styled.div`
   position: relative;
-  right: 30px;
-  margin-bottom: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 22px;
 `;
 
 const MotherDiv = styled.div`
-  position: absolute;
-  left: 50px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
   align-items: center;
+  /* Styles for desktop */
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
+  /* Styles for smartphones */
+  @media (max-width: 340px) {
+    justify-content: start;
+  }
 `;
 
 const Wrapper = styled.section`
   padding: 2px;
   margin-right: 18px;
   padding-right: 12px;
+  width: 340px;
 `;
 
 const placeHolderImg =
