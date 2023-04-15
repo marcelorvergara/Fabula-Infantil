@@ -160,7 +160,7 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
                 onChange={(event) => handleAgeChange(event)}
               />
               <RadioButtonLabel />
-              <div>Entre 0 e 3 anos</div>
+              <label htmlFor="0_3">Entre 0 e 3 anos</label>
             </Item>
             <Item>
               <RadioButton
@@ -171,7 +171,7 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
                 onChange={(event) => handleAgeChange(event)}
               />
               <RadioButtonLabel />
-              <div>Entre 4 e 7 anos</div>
+              <label htmlFor="4_7">Entre 4 e 7 anos</label>
             </Item>
             <Item>
               <RadioButton
@@ -182,7 +182,7 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
                 onChange={(event) => handleAgeChange(event)}
               />
               <RadioButtonLabel />
-              <div>Entre 8 e 11 anos</div>
+              <label htmlFor="8_11">Entre 8 e 11 anos</label>
             </Item>
             <Item>
               <RadioButton
@@ -193,7 +193,7 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
                 onChange={(event) => handleAgeChange(event)}
               />
               <RadioButtonLabel />
-              <div>Entre 12 e 14 anos</div>
+              <label htmlFor="12_14">Entre 12 e 14 anos</label>
             </Item>
           </Wrapper>
         </Content>

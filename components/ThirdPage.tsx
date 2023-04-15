@@ -208,33 +208,33 @@ export default function ThirdPage({
                   type="radio"
                   name="radio"
                   value="1"
-                  id="1"
+                  id="11"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <div>Opção 1</div>
+                <label htmlFor="11">Opção 1</label>
               </Item>
               <Item>
                 <RadioButton
                   type="radio"
                   name="radio"
                   value="2"
-                  id="2"
+                  id="12"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <div>Opção 2</div>
+                <label htmlFor="12">Opção 2</label>
               </Item>
               <Item>
                 <RadioButton
                   type="radio"
                   name="radio"
-                  value="3"
-                  id="3"
+                  value="13"
+                  id="13"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <div>Opção 3</div>
+                <label htmlFor="3">Opção 3</label>
               </Item>
             </Wrapper>
           </Content>
