@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
 import { GetServerSideProps, NextPage } from "next";
+import Script from "next/script";
 
 const FirstDiv = styled.div`
   position: relative;
@@ -248,6 +249,19 @@ export default function Home() {
 
   return (
     <FirstDiv>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-1032977240"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-1032977240');
+        `}
+      </Script>
       <MotherDiv>
         <Wrapper>
           <Cover />
