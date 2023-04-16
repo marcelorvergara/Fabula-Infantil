@@ -114,6 +114,10 @@ const RadioButton = styled.input`
   }
 `;
 
+const AgeQuestion = styled.div`
+  padding: 12px;
+`;
+
 type TSStyledClickd = {
   hasClicked: boolean;
 };
@@ -149,7 +153,7 @@ export default function AgePage({ onSendAge, resetPage }: IAgePageProps) {
     <CenterFP>
       <FPDiv hasClicked={hasClicked}>
         <Content hasClicked={hasClicked}>
-          Qual a sua idade?
+          <AgeQuestion>Qual a sua idade?</AgeQuestion>
           <Wrapper>
             <Item>
               <RadioButton
