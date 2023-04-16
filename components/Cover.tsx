@@ -116,22 +116,29 @@ type TSStyledCoverBack = {
 
 export default function Book() {
   const [hasHovered, setHasHovered] = useState(false);
+
   useEffect(() => {
     const handleMouseOver = () => {
       setHasHovered(true);
     };
 
     if (!hasHovered) {
-      document.addEventListener("mouseover", handleMouseOver);
+      const cover = document.getElementById("cover");
+      if (cover) {
+        cover.addEventListener("mouseover", handleMouseOver);
+      }
     }
 
     return () => {
-      document.removeEventListener("mouseover", handleMouseOver);
+      const cover = document.getElementById("cover");
+      if (cover) {
+        cover.removeEventListener("mouseover", handleMouseOver);
+      }
     };
   }, [hasHovered]);
 
   return (
-    <CenterBook>
+    <CenterBook id="cover">
       <CoverBack hasHovered={hasHovered}>
         <Content hasHovered={hasHovered}>
           <SignInBtn buynow>Deixe-me contar uma história...</SignInBtn>
