@@ -229,12 +229,12 @@ export default function ThirdPage({
                 <RadioButton
                   type="radio"
                   name="radio"
-                  value="13"
+                  value="3"
                   id="13"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <label htmlFor="3">Opção 3</label>
+                <label htmlFor="13">Opção 3</label>
               </Item>
             </Wrapper>
           </Content>

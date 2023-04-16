@@ -14,6 +14,7 @@ import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
+import { GetServerSideProps, NextPage } from "next";
 
 const FirstDiv = styled.div`
   position: relative;
@@ -67,26 +68,27 @@ export default function Home() {
     },
   ]);
 
-  const handleKw = (kw: string) => {
+  const handleAge = (ageStr: string) => {
+    setAge(ageStr);
+  };
+
+  const handleKw = async (kw: string) => {
     if (kw === "") {
       setKeyword("Uma história legal");
     } else {
       setKeyword(kw);
     }
-  };
 
-  const handleAge = async (ageStr: string) => {
     try {
       setIsLoading(true);
-      setAge(ageStr);
       // send to the back-end api to generate story
-      const res = await getText(keyword, ageStr);
+      const res = await getText(kw, age);
       const resultJson = (await res.json()) as IResult;
 
       // text to show in screen
       setResult(resultJson);
       // text to share after story is complete
-      setStory([keyword]);
+      setStory([kw]);
       // if there is an error in the generation of the story
       if (resultJson.result.message.content.indexOf("\n") === -1) {
         setResetPage(true);
@@ -94,11 +96,11 @@ export default function Home() {
       }
       // generate first image
       const image1 = await generateImage(
-        "gere uma imgaem sem texto para uma criança com idade entre " +
-          ageStr.replace("_", " e ") +
-          " anos sobre o seguinte texto: " +
+        "gere uma figura  para uma criança com idade entre " +
+          age.replace("_", " e ") +
+          " anos que resume o seguinte texto:\n" +
           keyword +
-          ". " +
+          ".\n" +
           getFirst60Percent(
             resultJson.result.message.content.replace("\\n", " ")
           )

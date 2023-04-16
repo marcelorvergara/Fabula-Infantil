@@ -20,7 +20,7 @@ const FPDiv = styled.div<TSStyledClickd>`
   color: darkblue;
   font-size: 1.2rem;
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   /* the cover only opens once */
   ${(props) => {
     if (props.hasClicked) {
