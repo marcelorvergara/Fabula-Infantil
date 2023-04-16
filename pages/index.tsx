@@ -239,7 +239,9 @@ export default function Home() {
       const storyIdJson = await storyId.json();
       // time necessary to store images in storage
       setTimeout(function () {
-        window.open(`https://story.contaumconto.com/shareStory/${storyIdJson}`);
+        window.open(
+          `https://story.fabulainfantil.com/shareStory/${storyIdJson}`
+        );
       }, 1500);
     }
   }
