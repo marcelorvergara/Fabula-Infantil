@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 const CenterBook = styled.section`
   width: 95%;
@@ -28,7 +29,7 @@ const Content = styled.div`
 
 const ButtonDiv = styled.div`
   width: 100%;
-  height: 60%;
+  height: 20%;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -43,11 +44,26 @@ const Button = styled.button`
   color: palevioletred;
   margin: 0 1em;
   padding: 0.25em 1em;
-  margin-bottom: 12px;
   font-size: 1.2rem;
   width: 80%;
 `;
 
+const QrCode = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+`;
+
+const Apio = styled.div`
+  color: palevioletred;
+  font-size: 14px;
+  padding: 10px;
+  margin: 12px;
+  text-align: center;
+`;
 export interface IBackCoverProps {
   onSendReset: (cond: boolean) => void;
   shareStory: () => void;
@@ -65,6 +81,14 @@ export default function BackCover({
           <Button onClick={() => onSendReset(true)}>Reiniciar</Button>
           <Button onClick={shareStory}>Compartilhar</Button>
         </ButtonDiv>
+        <QrCode>
+          <Apio>
+            Apoie nosso aplicativo e nos ajude a continuar contando histórias
+            incríveis!
+          </Apio>
+          <Image src="/qrcode.png" alt="qrcode" width={257} height={256} />
+          <Apio>Chave pix: 21 972464530</Apio>
+        </QrCode>
       </CoverBack>
     </CenterBook>
   );

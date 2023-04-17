@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 62px;
 `;
 
 const Spinner = styled.div`
