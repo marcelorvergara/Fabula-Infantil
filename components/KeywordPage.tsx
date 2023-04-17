@@ -8,7 +8,6 @@ const CenterFP = styled.section`
 `;
 
 const FPDiv = styled.div<TSStyledClickd>`
-  cursor: pointer;
   height: 870px;
   width: 310px;
   margin-top: 3px;
@@ -66,6 +65,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
+  cursor: pointer;
   background: transparent;
   border-radius: 3px;
   border: 2px solid palevioletred;
