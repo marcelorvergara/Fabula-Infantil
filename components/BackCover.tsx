@@ -86,7 +86,13 @@ export default function BackCover({
             Apoie nosso aplicativo e nos ajude a continuar contando histórias
             incríveis!
           </Apio>
-          <Image src="/qrcode.png" alt="qrcode" width={257} height={256} />
+          <Image
+            src="/qrcode.png"
+            alt="qrcode"
+            width={257}
+            height={256}
+            priority={true}
+          />
           <Apio>Chave pix: 21 972464530</Apio>
         </QrCode>
       </CoverBack>
