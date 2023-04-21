@@ -69,17 +69,17 @@ export default function Home() {
   ]);
 
   const handleAge = (ageStr: string) => {
-    gtag("event", "keyword", { age: ageStr });
+    gtag("event", "age", { age: ageStr });
     setAge(ageStr);
   };
 
   const handleKw = async (kw: string) => {
     if (kw === "") {
       setKeyword("Uma história legal");
-      gtag("event", "age", { age: "none" });
+      gtag("event", "kw", { age: "none" });
     } else {
       setKeyword(kw);
-      gtag("event", "age", { age: kw });
+      gtag("event", "kw", { age: kw });
     }
 
     try {
