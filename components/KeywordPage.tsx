@@ -122,6 +122,7 @@ export default function KeywordPage({
       <FPDiv hasClicked={hasClicked}>
         <Content hasClicked={hasClicked}>
           <Input
+            id="keyord_select"
             placeholder="digite aqui uma palavra"
             onChange={handleKwChange}></Input>
           <Button onClick={sendBtn}>Enviar</Button>
