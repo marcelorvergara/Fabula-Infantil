@@ -249,19 +249,6 @@ export default function Home() {
 
   return (
     <FirstDiv>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-1032977240"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'AW-1032977240');
-        `}
-      </Script>
       <MotherDiv>
         <Wrapper>
           <Cover />
