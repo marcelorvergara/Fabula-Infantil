@@ -208,33 +208,33 @@ export default function FourthPage({
                   type="radio"
                   name="radio"
                   value="1"
-                  id="1"
+                  id="fourth_page_1"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <label htmlFor="1">Opção 1</label>
+                <label htmlFor="fourth_page_1">Opção 1</label>
               </Item>
               <Item>
                 <RadioButton
                   type="radio"
                   name="radio"
                   value="2"
-                  id="2"
+                  id="fourth_page_2"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <label htmlFor="2">Opção 2</label>
+                <label htmlFor="fourth_page_2">Opção 2</label>
               </Item>
               <Item>
                 <RadioButton
                   type="radio"
                   name="radio"
                   value="3"
-                  id="3"
+                  id="fourth_page_3"
                   onChange={(event) => handleOptionChange(event)}
                 />
                 <RadioButtonLabel />
-                <label htmlFor="3">Opção 3</label>
+                <label htmlFor="fourth_page_3">Opção 3</label>
               </Item>
             </Wrapper>
           </Content>
