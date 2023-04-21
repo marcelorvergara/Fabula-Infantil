@@ -17,14 +17,14 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* <!-- Google tag (gtag.js) --> */}
       <Script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=AW-1032977240"></Script>
+        src="https://www.googletagmanager.com/gtag/js?id=G-2YQKQQP4ZX"></Script>
       <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', 'AW-1032977240');
+          gtag('config', 'G-2YQKQQP4ZX');
         `}
       </Script>
       <Component {...pageProps} />
