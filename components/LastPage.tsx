@@ -26,6 +26,7 @@ const FPDiv = styled.div<TSStyledClickd>`
   /* the cover only opens once */
   ${(props) => {
     if (props.hasClicked) {
+      gtag("event", "last_page", { go_to: "back_cover" });
       return css`
         z-index: 1;
         transform: rotateX(10deg) rotateY(-180deg);
