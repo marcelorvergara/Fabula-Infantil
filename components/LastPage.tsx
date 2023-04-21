@@ -26,7 +26,7 @@ const FPDiv = styled.div<TSStyledClickd>`
   /* the cover only opens once */
   ${(props) => {
     if (props.hasClicked) {
-      gtag("event", "last_page", { go_to: "text_back_cover" });
+      gtag("event", "last_page", { go_to: "all_to_back_cover" });
       return css`
         z-index: 1;
         transform: rotateX(10deg) rotateY(-180deg);
@@ -98,7 +98,18 @@ const ButtonDiv = styled.div<TSStyledClickd>`
   margin-top: 12px;
 `;
 
-const Button = styled.button`
+const Button = styled.button<TSStyledClickd>`
+  /* hide content when page has changed */
+  ${(props) => {
+    if (props.hasClicked) {
+      return css`
+        transition-delay: 1s;
+        display: none;
+        visibility: hidden;
+      `;
+    }
+    return "";
+  }}
   cursor: pointer;
   background: transparent;
   border-radius: 3px;
@@ -170,7 +181,11 @@ export default function LastPage({
                   })}
               </Text>
               <ButtonDiv hasClicked={hasClicked}>
-                <Button onClick={() => setHasClicked(true)}>Fim</Button>
+                <Button
+                  hasClicked={hasClicked}
+                  onClick={() => setHasClicked(true)}>
+                  Fim
+                </Button>
               </ButtonDiv>
             </Wrapper>
           </Content>
