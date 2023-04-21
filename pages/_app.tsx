@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +14,19 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Fabula Infantil - um site interativo para crianças onde elas podem personalizar e criar histórias incríveis! Com a ajuda de inteligência artificial, oferecemos aventuras únicas e empolgantes para estimular a imaginação e promover o amor pela leitura."
         />
       </Head>
+      {/* <!-- Google tag (gtag.js) --> */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-1032977240"></Script>
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'AW-1032977240');
+        `}
+      </Script>
       <Component {...pageProps} />
 
       <Analytics />
