@@ -69,14 +69,17 @@ export default function Home() {
   ]);
 
   const handleAge = (ageStr: string) => {
+    gtag("event", "keyword", { age: ageStr });
     setAge(ageStr);
   };
 
   const handleKw = async (kw: string) => {
     if (kw === "") {
       setKeyword("Uma história legal");
+      gtag("event", "age", { age: "none" });
     } else {
       setKeyword(kw);
+      gtag("event", "age", { age: kw });
     }
 
     try {
@@ -115,6 +118,7 @@ export default function Home() {
   };
 
   const handleOption = async (text: string) => {
+    gtag("event", "opt_1", { opt: text });
     try {
       setIsLoading(true);
       if (result?.result.message) {
@@ -165,6 +169,7 @@ export default function Home() {
   };
 
   const handleOption2 = async (text: string) => {
+    gtag("event", "opt_2", { opt: text });
     try {
       setIsLoading(true);
       if (result?.result.message) {
@@ -228,6 +233,7 @@ export default function Home() {
   }, [resetPage]);
 
   async function shareStory() {
+    gtag("event", "share_story", { shared: true });
     const storyId = await shareStoryHelper(
       story,
       firstImage,
@@ -248,19 +254,6 @@ export default function Home() {
 
   return (
     <FirstDiv>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-2YQKQQP4ZX"
-      />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-2YQKQQP4ZX');
-        `}
-      </Script>
       <MotherDiv>
         <Wrapper>
           <Cover />
