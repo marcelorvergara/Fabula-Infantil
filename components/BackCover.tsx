@@ -25,6 +25,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 150px;
+  font-size: 16px;
 `;
 
 const ButtonDiv = styled.div`
@@ -76,7 +77,7 @@ export default function BackCover({
   return (
     <CenterBook>
       <CoverBack>
-        <Content>Fim</Content>
+        <Content>Fabula Infantil</Content>
         <ButtonDiv>
           <Button onClick={() => onSendReset(true)}>Reiniciar</Button>
           <Button onClick={shareStory}>Compartilhar</Button>

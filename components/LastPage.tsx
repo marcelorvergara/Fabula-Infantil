@@ -26,7 +26,7 @@ const FPDiv = styled.div<TSStyledClickd>`
   /* the cover only opens once */
   ${(props) => {
     if (props.hasClicked) {
-      gtag("event", "last_page", { go_to: "back_cover" });
+      gtag("event", "last_page", { go_to: "text_back_cover" });
       return css`
         z-index: 1;
         transform: rotateX(10deg) rotateY(-180deg);
@@ -75,6 +75,39 @@ const ImageContainer = styled(Image)`
 
 const Text = styled.div`
   margin: 0;
+`;
+
+const ButtonDiv = styled.div<TSStyledClickd>`
+  ${(props) => {
+    if (props.hasClicked) {
+      gtag("event", "last_page", { go_to: "button_back_cover" });
+      return css`
+        z-index: 1;
+        transform: rotateX(10deg) rotateY(-180deg);
+        transition-duration: 3s;
+      `;
+    }
+    return "";
+  }}
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+`;
+
+const Button = styled.button`
+  cursor: pointer;
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  font-size: 1.2rem;
+  width: 80%;
 `;
 
 type TSStyledClickd = {
@@ -136,6 +169,9 @@ export default function LastPage({
                     }
                   })}
               </Text>
+              <ButtonDiv hasClicked={hasClicked}>
+                <Button onClick={() => setHasClicked(true)}>Fim</Button>
+              </ButtonDiv>
             </Wrapper>
           </Content>
         )}
