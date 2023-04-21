@@ -141,7 +141,7 @@ export default function Book() {
     <CenterBook id="cover">
       <CoverBack hasHovered={hasHovered}>
         <Content hasHovered={hasHovered}>
-          <SignInBtn buynow>Deixe-me contar uma história...</SignInBtn>
+          <SignInBtn buynow>Era uma vez...</SignInBtn>
         </Content>
       </CoverBack>
     </CenterBook>
