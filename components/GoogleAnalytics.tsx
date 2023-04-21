@@ -39,6 +39,7 @@ const GoogleAnalytics = () => {
   if (!TRACKING_ID || router.isPreview) {
     return null;
   }
+
   return (
     <>
       <Script
