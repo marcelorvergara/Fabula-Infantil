@@ -14,7 +14,6 @@ import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
-import { GetServerSideProps, NextPage } from "next";
 import Script from "next/script";
 
 const FirstDiv = styled.div`
@@ -249,6 +248,19 @@ export default function Home() {
 
   return (
     <FirstDiv>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-2YQKQQP4ZX"
+      />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-2YQKQQP4ZX');
+        `}
+      </Script>
       <MotherDiv>
         <Wrapper>
           <Cover />
