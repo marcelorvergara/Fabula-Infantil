@@ -76,10 +76,10 @@ export default function Home() {
   const handleKw = async (kw: string) => {
     if (kw === "") {
       setKeyword("Uma história legal");
-      gtag("event", "kw", { age: "none" });
+      gtag("event", "kw", { hw: "none" });
     } else {
       setKeyword(kw);
-      gtag("event", "kw", { age: kw });
+      gtag("event", "kw", { kw });
     }
 
     try {
