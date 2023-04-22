@@ -10,12 +10,11 @@ const CoverBack = styled.div<TSStyledCoverBack>`
   cursor: pointer;
   height: 880px;
   width: 320px;
-  background-color: #46485a;
+  background-image: linear-gradient(to top, #3c3c5c, #495a83, #49758a);
   border-radius: 2px 20px 20px 2px;
   box-shadow: 1px 1px 10px gray;
   transform: rotateX(10deg);
   transform-origin: center left;
-  /* the cover only opens */
   ${(props) => {
     if (props.hasHovered) {
       return css`
@@ -44,10 +43,11 @@ const fadeOut = keyframes`
 
 const Content = styled.div<TSStyledCoverBack>`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 14px;
-  padding: 12px;
+  padding: 48px;
   ${(props) => {
     if (props.hasHovered) {
       return css`
@@ -59,55 +59,45 @@ const Content = styled.div<TSStyledCoverBack>`
   }}
 `;
 
-const Btn = styled.button<{ buynow: boolean }>`
-  background-color: ${({ buynow }) =>
-    buynow ? "hsla(40, 72%, 50%, 1)" : "hsla(347, 49%, 46%, 1)"};
-  border: 1px solid
-    ${({ buynow }) =>
-      buynow ? "hsla(40, 72%, 60%, 1)" : "hsla(0, 0%, 0%, 0.4)"};
-  color: hsla(150, 14%, 97%, 1);
-  cursor: pointer;
-  outline: none;
-  font-size: 0.895rem;
-  text-shadow: 0.1rem 0.1rem 0.5rem hsla(0, 0%, 0%, 0.5);
-  letter-spacing: 0.1rem;
-  border-radius: 0.5rem;
-  user-select: none;
-  padding: 1.5rem 2rem;
-  margin: 1rem;
-  transition: all 0.1s ease-in;
-
-  ::-moz-focus-inner {
-    border: 0;
-  }
-
-  &:hover {
-    background-color: ${({ buynow }) =>
-      buynow ? "hsla(40, 72%, 60%, 1)" : "hsla(347, 49%, 51%, 1)"};
-    ${({ buynow }) => buynow && `transform: translateY(-3px)`}
-  }
-
-  &:active {
-    background-color: ${({ buynow }) =>
-      buynow ? "hsla(40, 72%, 35%, 1)" : "hsla(347, 49%, 26%, 1)"};
-  }
+const Title = styled.h1`
+  font-family: "Arial", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 16px 0;
+  color: #ffd700;
 `;
 
-const SignInBtn = styled(Btn)`
-  text-decoration: none;
-  background-color: hsla(189, 85%, 28%, 1);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125),
-    0 1px 1px rgba(0, 0, 0, 0.05);
-  border-bottom-width: 0.5rem;
+const Subtitle = styled.h2`
+  font-family: "Arial", sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+`;
 
-  &:hover {
-    background-color: hsla(189, 85%, 32%, 1);
-  }
+const Author = styled.h3`
+  font-family: "Arial", sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+`;
 
-  &:active {
-    border-bottom-width: 0.1rem;
-    border-top-width: 0.5rem;
-  }
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("URL_DA_IMAGEM_DO_FUNDO");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
 `;
 
 type TSStyledCoverBack = {
@@ -141,7 +131,9 @@ export default function Book() {
     <CenterBook id="cover">
       <CoverBack hasHovered={hasHovered}>
         <Content hasHovered={hasHovered}>
-          <SignInBtn buynow>Era uma vez...</SignInBtn>
+          <Title>Fábula Infantil</Title>
+          <Subtitle>Histórias Criadas por Você</Subtitle>
+          {/* <Author>por Você Mesmo</Author> */}
         </Content>
       </CoverBack>
     </CenterBook>
