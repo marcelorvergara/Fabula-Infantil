@@ -69,39 +69,46 @@ const Title = styled.h1`
   color: #ffd700;
 `;
 
-const Subtitle = styled.h2`
+const Subtitle = styled.h2<TSStyledCoverDisplay>`
   font-family: "Arial", sans-serif;
   font-size: 1.5rem;
   font-weight: normal;
   text-align: center;
   margin: 0 0 8px 0;
   color: #ffffff;
+  ${(props) => {
+    if (!props.display) {
+      return css`
+        display: none;
+      `;
+    }
+    return "";
+  }}
 `;
 
-const Author = styled.h3`
+const Author = styled.h3<TSStyledCoverDisplay>`
   font-family: "Arial", sans-serif;
   font-size: 1.2rem;
   font-weight: normal;
   text-align: center;
   margin: 0 0 4px 0;
   color: #ffffff;
-`;
-
-const BackgroundImage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("URL_DA_IMAGEM_DO_FUNDO");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5;
-  z-index: -1;
+  ${(props) => {
+    if (!props.display) {
+      return css`
+        display: none;
+      `;
+    }
+    return "";
+  }}
 `;
 
 type TSStyledCoverBack = {
   hasHovered?: boolean;
+};
+
+type TSStyledCoverDisplay = {
+  display?: boolean;
 };
 
 export default function Book() {
@@ -132,8 +139,12 @@ export default function Book() {
       <CoverBack hasHovered={hasHovered}>
         <Content hasHovered={hasHovered}>
           <Title>Fábula Infantil</Title>
-          <Subtitle>Histórias Criadas por Você</Subtitle>
-          {/* <Author>por Você Mesmo</Author> */}
+          <Subtitle display={true}>Histórias Criadas por Você</Subtitle>
+          <Author display={true}>Aventuras únicas e memoráveis</Author>
+          <Subtitle display={false}>Estimule a Imaginação</Subtitle>
+          <Author display={false}>Com ajuda de inteligência artificial</Author>
+          <Subtitle display={false}>Histórias e fábulas</Subtitle>
+          <Author display={false}>Para crianças de 0 a 14 anos</Author>
         </Content>
       </CoverBack>
     </CenterBook>
