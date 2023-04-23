@@ -1,26 +1,29 @@
-import Cover from "@/components/Cover";
+const Cover = dynamic(() => import("@/components/Cover"), {
+  loading: () => <div></div>,
+  ssr: false,
+});
 const AgePage = dynamic(() => import("@/components/AgePage"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 const KeywordPage = dynamic(() => import("@/components/KeywordPage"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 const ThirdPage = dynamic(() => import("@/components/ThirdPage"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 const FourthPage = dynamic(() => import("@/components/FourthPage"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 const LastPage = dynamic(() => import("@/components/LastPage"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 const BackCover = dynamic(() => import("@/components/BackCover"), {
-  loading: () => <div>.</div>,
+  loading: () => <div></div>,
   ssr: false,
 });
 import {
