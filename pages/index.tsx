@@ -1,10 +1,28 @@
-import BackCover from "@/components/BackCover";
 import Cover from "@/components/Cover";
-import KeywordPage from "@/components/KeywordPage";
-import FourthPage from "@/components/FourthPage";
-import LastPage from "@/components/LastPage";
-import AgePage from "@/components/AgePage";
-import ThirdPage from "@/components/ThirdPage";
+const AgePage = dynamic(() => import("@/components/AgePage"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
+const KeywordPage = dynamic(() => import("@/components/KeywordPage"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
+const ThirdPage = dynamic(() => import("@/components/ThirdPage"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
+const FourthPage = dynamic(() => import("@/components/FourthPage"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
+const LastPage = dynamic(() => import("@/components/LastPage"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
+const BackCover = dynamic(() => import("@/components/BackCover"), {
+  loading: () => <div>.</div>,
+  ssr: false,
+});
 import {
   generateImage,
   getText,
@@ -14,7 +32,7 @@ import { IMessage, IResult } from "@/interfaces/IResult";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getFirst60Percent } from "@/helpers/generalFunctions";
-import Script from "next/script";
+import dynamic from "next/dynamic";
 
 const FirstDiv = styled.div`
   position: relative;

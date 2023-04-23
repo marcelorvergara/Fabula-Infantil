@@ -77,7 +77,7 @@ const Subtitle = styled.h2<TSStyledCoverDisplay>`
   margin: 0 0 8px 0;
   color: #ffffff;
   ${(props) => {
-    if (!props.display) {
+    if (props.display !== "true") {
       return css`
         display: none;
       `;
@@ -94,7 +94,7 @@ const Author = styled.h3<TSStyledCoverDisplay>`
   margin: 0 0 4px 0;
   color: #ffffff;
   ${(props) => {
-    if (!props.display) {
+    if (props.display !== "true") {
       return css`
         display: none;
       `;
@@ -108,7 +108,7 @@ type TSStyledCoverBack = {
 };
 
 type TSStyledCoverDisplay = {
-  display?: boolean;
+  display?: string;
 };
 
 export default function Book() {
@@ -139,12 +139,14 @@ export default function Book() {
       <CoverBack hasHovered={hasHovered}>
         <Content hasHovered={hasHovered}>
           <Title>Fábula Infantil</Title>
-          <Subtitle display={true}>Histórias Criadas por Você</Subtitle>
-          <Author display={true}>Aventuras únicas e memoráveis</Author>
-          <Subtitle display={false}>Estimule a Imaginação</Subtitle>
-          <Author display={false}>Com ajuda de inteligência artificial</Author>
-          <Subtitle display={false}>Histórias e fábulas</Subtitle>
-          <Author display={false}>Para crianças de 0 a 14 anos</Author>
+          <Subtitle display={"true"}>Histórias Criadas por Você</Subtitle>
+          <Author display={"true"}>Aventuras únicas e memoráveis</Author>
+          <Subtitle display={"false"}>Estimule a Imaginação</Subtitle>
+          <Author display={"false"}>
+            Com ajuda de inteligência artificial
+          </Author>
+          <Subtitle display={"false"}>Histórias e fábulas</Subtitle>
+          <Author display={"false"}>Para crianças de 0 a 14 anos</Author>
         </Content>
       </CoverBack>
     </CenterBook>
