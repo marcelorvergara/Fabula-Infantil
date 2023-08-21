@@ -1,3 +1,30 @@
+# Fabula Infantil
+
+<img height="340" src="https://github.com/marcelorvergara/Fisio-Vue-BackOffice/blob/main/MiscFiles/fabula_infantil.gif" alt="demonstração do uso do aplicativo">
+
+### O que esse app faz?
+
+- Esse aplicativo cria histórias com auxílio da inteligência artificial.
+- Está disponível nesse link [Fabula Infantil](https://fabulainfantil.com/).
+
+### Como foi desenvolvido?
+
+- Criado com [Next.js](https://nextjs.org/docs), ele utiliza a tecnologia SPA baseado em React.
+
+### Quais a principais tecnologias foram utilizadas?
+
+- Além do React/Next.js, esse App utiliza Typescript, Axios e styled-components.
+
+### Pré-requisitos
+
+- Node e o back-end ainda não disponibilizado publicamente.
+
+### O que pode melhorar?
+
+- Criação de uma sessão com histórias criadas por outros usuários.
+- Melhor layout da página de compartilhamento de histórias.
+- Criação de testes unitários e de integração.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
